@@ -1,7 +1,7 @@
 package ru.hzerr.collections.map;
 
 import org.jetbrains.annotations.NotNull;
-import ru.hzerr.collections.Pair;
+import ru.hzerr.collections.HPair;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -62,6 +62,18 @@ public class HashHMap<K, V> extends HashMap<K, V> implements HMap<K, V> {
     }
 
     @Override
+    public boolean noContainsKey(K key) { return !containsKey(key); }
+
+    @Override
+    public boolean noContainsValue(V value) { return !containsValue(value); }
+
+    @Override
+    public boolean noContainsKey(Predicate<K> predicate) { return !containsKey(predicate); }
+
+    @Override
+    public boolean noContainsValue(Predicate<K> predicate) { return !containsValue(predicate); }
+
+    @Override
     public void forKEach(@NotNull Consumer<? super K> consumer) {
         this.keySet().forEach(consumer);
     }
@@ -118,9 +130,9 @@ public class HashHMap<K, V> extends HashMap<K, V> implements HMap<K, V> {
     }
 
     @SafeVarargs
-    public static <K, V> HashHMap<K, V> create(@NotNull Pair<K, V>... pairs) {
+    public static <K, V> HashHMap<K, V> create(@NotNull HPair<K, V>... pairs) {
         HashHMap<K, V> instance = new HashHMap<>();
-        for (Pair<K, V> pair: pairs) {
+        for (HPair<K, V> pair: pairs) {
             instance.put(pair.getKey(), pair.getValue());
         }
 

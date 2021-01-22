@@ -1,4 +1,6 @@
 package ru.hzerr.collections.list;
 
-public interface HList {
+import java.util.List;
+
+public interface HList<E> extends List<E>, Contender<E> {
 }
