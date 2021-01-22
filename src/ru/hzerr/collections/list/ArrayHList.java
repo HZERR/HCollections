@@ -28,6 +28,15 @@ public class ArrayHList<E> extends ArrayList<E> implements HList<E> {
         return false;
     }
 
+    @Override
+    @SafeVarargs
+    @SuppressWarnings("ManualArrayToCollectionCopy")
+    public final void add(E... elements) {
+        for (E element : elements) {
+            super.add(element);
+        }
+    }
+
     @SafeVarargs
     public static <E> ArrayHList<E> create(@NotNull E... elements) {
         return new ArrayHList<>(Arrays.asList(elements));
