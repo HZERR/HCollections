@@ -1,6 +1,7 @@
 package ru.hzerr.collections.list;
 
 import org.jetbrains.annotations.NotNull;
+import ru.hzerr.HStream;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -36,6 +37,16 @@ public class ArrayHList<E> extends ArrayList<E> implements HList<E> {
             super.add(element);
         }
     }
+
+    @Override
+    @SafeVarargs
+    public final void setAll(E... elements) {
+        clear();
+        add(elements);
+    }
+
+    @Override
+    public HStream<E> toHStream() { return HStream.of(this); }
 
     @SafeVarargs
     public static <E> ArrayHList<E> create(@NotNull E... elements) {
