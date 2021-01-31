@@ -46,7 +46,8 @@ public class ArrayHList<E> extends ArrayList<E> implements HList<E> {
     }
 
     @Override
-    public HStream<E> toHStream() { return HStream.of(this); }
+    @SuppressWarnings("unchecked")
+    public HStream<E> toHStream() { return HStream.of((E[]) this.toArray()); }
 
     @SafeVarargs
     public static <E> ArrayHList<E> create(@NotNull E... elements) {
