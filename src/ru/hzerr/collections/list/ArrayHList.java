@@ -16,6 +16,18 @@ public class ArrayHList<E> extends ArrayList<E> implements HList<E> {
     public ArrayHList(Collection<? extends E> collection) { super(collection); }
 
     @Override
+    public <R> HList<R> map(Function<? super E, ? extends R> mapper) {
+        //noinspection unchecked
+        E[] elements = (E[]) toArray();
+        HList<R> list = new ArrayHList<>();
+        for (E element : elements) {
+            list.add(mapper.apply(element));
+        }
+
+        return list;
+    }
+
+    @Override
     public boolean noContains(E element) { return !contains(element); }
 
     @Override
@@ -54,6 +66,7 @@ public class ArrayHList<E> extends ArrayList<E> implements HList<E> {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o instanceof HList) {
+            //noinspection unchecked
             HList<E> target = (HList<E>) o;
             return this.containsAll(target) && target.containsAll(this);
         }
@@ -64,17 +77,5 @@ public class ArrayHList<E> extends ArrayList<E> implements HList<E> {
     @SafeVarargs
     public static <E> ArrayHList<E> create(@NotNull E... elements) {
         return new ArrayHList<>(Arrays.asList(elements));
-    }
-
-    @Override
-    @SuppressWarnings("unchecked")
-    public <R> HList<R> map(Function<? super E, ? extends R> mapper) {
-        E[] elements = (E[]) toArray();
-        HList<R> list = new ArrayHList<>();
-        for (E element : elements) {
-            list.add(mapper.apply(element));
-        }
-
-        return list;
     }
 }
