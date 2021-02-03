@@ -4,7 +4,9 @@ import ru.hzerr.HStream;
 
 import java.util.List;
 
-public interface HList<E> extends List<E>, Contender<E> {
+public interface HList<E> extends List<E>,
+        Contender<E>,
+        Streamable<E> {
 
     @SuppressWarnings("unchecked")
     void add(E... elements);

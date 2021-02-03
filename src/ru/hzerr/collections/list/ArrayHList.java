@@ -6,6 +6,7 @@ import ru.hzerr.HStream;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.function.Function;
 import java.util.function.Predicate;
 
 public class ArrayHList<E> extends ArrayList<E> implements HList<E> {
@@ -49,8 +50,31 @@ public class ArrayHList<E> extends ArrayList<E> implements HList<E> {
     @SuppressWarnings("unchecked")
     public HStream<E> toHStream() { return HStream.of((E[]) this.toArray()); }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o instanceof HList) {
+            HList<E> target = (HList<E>) o;
+            return this.containsAll(target) && target.containsAll(this);
+        }
+
+        return false;
+    }
+
     @SafeVarargs
     public static <E> ArrayHList<E> create(@NotNull E... elements) {
         return new ArrayHList<>(Arrays.asList(elements));
+    }
+
+    @Override
+    @SuppressWarnings("unchecked")
+    public <R> HList<R> map(Function<? super E, ? extends R> mapper) {
+        E[] elements = (E[]) toArray();
+        HList<R> list = new ArrayHList<>();
+        for (E element : elements) {
+            list.add(mapper.apply(element));
+        }
+
+        return list;
     }
 }
