@@ -7,4 +7,7 @@ public interface HMap<K, V> extends Map<K, V>,
         Receiver<K, V>,
         Contender<K, V>,
         Streamable<K, V> {
+
+    V putAndGet(K key, V value);
+    V putIfAbsentAndGet(K key, V value);
 }

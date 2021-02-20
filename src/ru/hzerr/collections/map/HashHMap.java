@@ -138,4 +138,16 @@ public class HashHMap<K, V> extends HashMap<K, V> implements HMap<K, V> {
 
         return instance;
     }
+
+    @Override
+    public V putAndGet(K key, V value) {
+        put(key, value);
+        return value;
+    }
+
+    @Override
+    public V putIfAbsentAndGet(K key, V value) {
+        putIfAbsent(key, value);
+        return value;
+    }
 }
