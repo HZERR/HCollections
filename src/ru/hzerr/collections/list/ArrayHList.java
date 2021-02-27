@@ -31,6 +31,9 @@ public class ArrayHList<E> extends ArrayList<E> implements HList<E> {
     public boolean noContains(E element) { return !contains(element); }
 
     @Override
+    public boolean noContains(Predicate<E> action) { return !contains(action); }
+
+    @Override
     public boolean contains(Predicate<E> predicate) {
         //noinspection unchecked
         for (E element : (E[]) this.toArray()) {
