@@ -62,16 +62,16 @@ public class HashHMap<K, V> extends HashMap<K, V> implements HMap<K, V> {
     }
 
     @Override
-    public boolean noContainsKey(K key) { return !containsKey(key); }
+    public boolean noContainsKey(@NotNull K key) { return !containsKey(key); }
 
     @Override
-    public boolean noContainsValue(V value) { return !containsValue(value); }
+    public boolean noContainsValue(@NotNull V value) { return !containsValue(value); }
 
     @Override
-    public boolean noContainsKey(Predicate<K> predicate) { return !containsKey(predicate); }
+    public boolean noContainsKey(@NotNull Predicate<K> predicate) { return !containsKey(predicate); }
 
     @Override
-    public boolean noContainsValue(Predicate<K> predicate) { return !containsValue(predicate); }
+    public boolean noContainsValue(@NotNull Predicate<K> predicate) { return !containsValue(predicate); }
 
     @Override
     public void forKEach(@NotNull Consumer<? super K> consumer) {

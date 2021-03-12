@@ -3,7 +3,7 @@ package ru.hzerr.collections.map;
 import java.util.function.Function;
 import java.util.function.Predicate;
 
-// ДОБАВИТЬ ДОКУМЕНТАЦИЮ, ИЗМЕНИТЬ НАЗВАНИЕ
+// CHANGE DOCUMENTATION
 public interface Receiver<K, V> {
 
     <R> R getKIf(Function<? super K, R> function, Predicate<R> predicate);
