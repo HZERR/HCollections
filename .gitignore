@@ -2,7 +2,6 @@
 /out/
 .idea
 .gradle
-gradle
 src/test
 HCollections.iml
 build/classes

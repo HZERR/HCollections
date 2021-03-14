@@ -1,7 +1,7 @@
 package ru.hzerr.collections.list;
 
 import org.jetbrains.annotations.NotNull;
-import ru.hzerr.HStream;
+import ru.hzerr.stream.HStream;
 
 import java.util.ArrayList;
 import java.util.Arrays;

@@ -1,6 +1,6 @@
 package ru.hzerr.collections.list;
 
-import ru.hzerr.HStream;
+import ru.hzerr.stream.HStream;
 
 import java.util.List;
 
