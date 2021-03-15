@@ -40,7 +40,7 @@ tasks.withType(JavaExec) {
 
 shadowJar {
     archiveBaseName.set('hcollections')
-    archiveVersion.set('1.1.1')
+    archiveVersion.set('1.1.2')
     archiveClassifier.set('')
 }
 
